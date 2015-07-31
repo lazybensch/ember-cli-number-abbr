@@ -1,13 +1,7 @@
 import { numberAbbr } from '../../../helpers/number-abbr';
 import { module, test } from 'qunit';
 
-module('Unit | Helper | number abbr', {
-  beforeEach: function() {
-    Math.log10 = Math.log10 || function(x) {
-      return Math.log(x) / Math.LN10;
-    };
-  }
-});
+module('Unit | Helper | number abbr');
 
 test('formats numbers correctly', function(assert) {
   assert.equal(numberAbbr(3),           '3');
