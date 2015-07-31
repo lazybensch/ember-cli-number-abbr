@@ -1,15 +1,22 @@
 import Ember from 'ember';
 
+function getDecimalPlaces(adjustedNumber, maxSignificantPlaces) {
+  const baseLength = Math.ceil( Math.log10(adjustedNumber) );
+  const decimalPlaces = maxSignificantPlaces - (baseLength > 0 ? baseLength : 0);
+  return decimalPlaces > 0 ? decimalPlaces : 0;
+}
+
 export function numberAbbr(number = 0, maxSignificantPlaces = 3, padding = false) {
 
   let symbols = Ember.A(['', 'K', 'M', 'B', 'T', 'Qua', 'Qui', 'Sex', 'Sep', 'Oct', 'Non', 'Dec']);
 
   let results = symbols.map( (symbol, index) => {
     const adjustedNumber = number / Math.pow(10, index*3);
-    const baseLength = Math.ceil( Math.log10(adjustedNumber) );
-    const decimalPlaces = maxSignificantPlaces - (baseLength > 0 ? baseLength : 0);
+
+    const decimalPlaces = getDecimalPlaces(adjustedNumber, maxSignificantPlaces);
+
     const roundedNumber = adjustedNumber.toFixed( decimalPlaces > 0 ? decimalPlaces : 0 );
-    const strippedNumber = padding ? roundedNumber :roundedNumber.replace(/(\.0+$)/, '');
+    const strippedNumber = padding ? roundedNumber : roundedNumber.replace(/(\.0+$)/, '');
     return strippedNumber + symbol;
   });
 
@@ -21,7 +28,3 @@ export function numberAbbr(number = 0, maxSignificantPlaces = 3, padding = false
 }
 
 export default Ember.Helper.helper(numberAbbr);
-
-
-// 0 - 999 / 1.000 - 999.999 / 1.000.000 - 999.000.000
-// 3*1 3*2 3*3
