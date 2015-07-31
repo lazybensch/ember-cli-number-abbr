@@ -1,15 +1,15 @@
 import Ember from 'ember';
 
-export function numberAbbr(number = 0, maxSignificantPlaces = 3) {
+export function numberAbbr(number = 0, maxSignificantPlaces = 3, padding = false) {
 
-  let symbols = Ember.A(['', 'K', 'M', 'B', 'T', 'Qua', 'Qui']);
+  let symbols = Ember.A(['', 'K', 'M', 'B', 'T', 'Qua', 'Qui', 'Sex', 'Sep', 'Oct', 'Non', 'Dec']);
 
   let results = symbols.map( (symbol, index) => {
     const adjustedNumber = number / Math.pow(10, index*3);
-    const padding = Math.ceil( Math.log10(adjustedNumber) );
-    const decimalPlaces = maxSignificantPlaces - padding;
+    const baseLength = Math.ceil( Math.log10(adjustedNumber) );
+    const decimalPlaces = maxSignificantPlaces - (baseLength > 0 ? baseLength : 0);
     const roundedNumber = adjustedNumber.toFixed( decimalPlaces > 0 ? decimalPlaces : 0 );
-    const strippedNumber = roundedNumber.replace(/(\.0+$)/, '');
+    const strippedNumber = padding ? roundedNumber :roundedNumber.replace(/(\.0+$)/, '');
     return strippedNumber + symbol;
   });
 
