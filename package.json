@@ -1,7 +1,7 @@
 {
   "name": "ember-cli-number-abbr",
-  "version": "0.0.0",
-  "description": "The default blueprint for ember-cli addons.",
+  "version": "1.0.0",
+  "description": "This addon will format your large numbers into an easy to read form like so: {number-abbr 13460921} -> '13.5M' with tons of additional configurations.",
   "directories": {
     "doc": "doc",
     "test": "tests"
@@ -15,7 +15,7 @@
   "engines": {
     "node": ">= 0.10.0"
   },
-  "author": "",
+  "author": "LazyBensch <lazybensch@gmail.com>",
   "license": "MIT",
   "devDependencies": {
     "broccoli-asset-rev": "^2.0.2",
@@ -37,7 +37,12 @@
     "ember-try": "0.0.6"
   },
   "keywords": [
-    "ember-addon"
+    "ember-addon",
+    "ember-cli-number-abbr",
+    "helper",
+    "number",
+    "format",
+    "abbreviation",
   ],
   "dependencies": {
     "ember-cli-babel": "^5.0.0"
