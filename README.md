@@ -1,5 +1,5 @@
 # Ember-cli-number-abbr
-[![Build Status](https://travis-ci.org/lazybensch/ember-cli-number-abbr.svg)](https://travis-ci.org/lazybensch/ember-cli-number-abbr)
+[![Build Status](https://travis-ci.org/lazybensch/ember-cli-number-abbr.svg)](https://travis-ci.org/lazybensch/ember-cli-number-abbr) [![Code Climate](https://codeclimate.com/github/lazybensch/ember-cli-number-abbr/badges/gpa.svg)](https://codeclimate.com/github/lazybensch/ember-cli-number-abbr)
 
 
 This addon provides you with a helper that formats large numbers in a human readable form. It's quite straight forward, just have a look at the examples below:
