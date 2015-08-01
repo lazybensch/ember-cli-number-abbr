@@ -14,9 +14,9 @@ function getDecimalPlaces(adjustedNumber, maxSignificantPlaces) {
   return decimalPlaces > 0 ? decimalPlaces : 0;
 }
 
-export function numberAbbr(number = 0, maxSignificantPlaces = 3, padding = false) {
+export function numberAbbr(number = 0, delimiter = '.', maxSignificantPlaces = 3, padding = false, abbreviations = null ) {
 
-  let symbols = Ember.A(['', 'K', 'M', 'B', 'T', 'Qua', 'Qui', 'Sex', 'Sep', 'Oct', 'Non', 'Dec']);
+  let symbols = abbreviations || Ember.A(['', 'K', 'M', 'B', 'T', 'Qua', 'Qui', 'Sex', 'Sep', 'Oct', 'Non', 'Dec']);
 
   let results = symbols.map( (symbol, index) => {
 
@@ -25,7 +25,8 @@ export function numberAbbr(number = 0, maxSignificantPlaces = 3, padding = false
     const decimalPlaces = getDecimalPlaces(adjustedNumber, maxSignificantPlaces);
     const roundedNumber = adjustedNumber.toFixed(decimalPlaces);
 
-    const strippedNumber = padding ? roundedNumber : roundedNumber.replace(/(\.0+$)/, '');
+    let strippedNumber = padding ? roundedNumber : roundedNumber.replace(/(\.0+$)/, '');
+    strippedNumber = strippedNumber.replace(/\./, delimiter);
     return strippedNumber + symbol;
   });
 

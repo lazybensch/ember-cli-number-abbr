@@ -42,7 +42,7 @@
     "helper",
     "number",
     "format",
-    "abbreviation",
+    "abbreviation"
   ],
   "dependencies": {
     "ember-cli-babel": "^5.0.0"
