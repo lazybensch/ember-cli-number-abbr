@@ -47,16 +47,19 @@ You can enable padding so your numbers will allways have a fixed width:
 You can provide your own list of abbreviations:
 ```javascript
   withSpaces: ['', ' K', ' M' , ' B', ' T', ' Qua', ' Qui', ' Sex', ' Sep', ' Oct', ' Non', ' Dec'],
-  withSpaces: ['', ' Thousand', ' Million' , ' Billion', '...'],
+  withCurrency: ['$', '$ K', '$ M' , '$ B', '$ T', '$ Qua', '$ Qui', '$ Sex', '$ Sep', '$ Oct', '$ Non', '$ Dec'],
+  fullWords: ['', ' Thousand', ' Million' , ' Billion', '...'],
   theRealThing: ['', ' Thousand', ' Million' , ' Milliard', '...'],
 ```
 ```html
 <label>{{number-abbr 14100000000 '.' 4 withSpaces}}</label>
+<label>{{number-abbr 14100000000 '.' 4 withCurrency}}</label>
 <label>{{number-abbr 12100000000 '.' 4 fullWords}}</label>
 <label>{{number-abbr 12100000000 '.' 4 theRealThing}}</label>
 ```
 ```html
 <label>14.1 B</label>
+<label>14.1$ B</label>
 <label>12.100 Billion</label>
 <label>12.100 Milliard</label>
 ```
