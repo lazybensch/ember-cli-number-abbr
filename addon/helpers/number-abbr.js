@@ -15,6 +15,7 @@ function getDecimalPlaces(adjustedNumber, maxSignificantPlaces) {
 }
 
 export function numberAbbr([number = 0, delimiter = '.', maxSignificantPlaces = 3, padding = false, abbreviations = null], options) { // jshint ignore:line
+  number = parseInt(number);
 
   let symbols = abbreviations || Ember.A(['', 'K', 'M', 'B', 'T', 'Qua', 'Qui', 'Sex', 'Sep', 'Oct', 'Non', 'Dec']);
 

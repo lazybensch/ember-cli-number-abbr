@@ -22,6 +22,11 @@ test('respects delimiter option', function(assert) {
   assert.equal(numberAbbr([1234,','], {}),     '1,23K');
 });
 
+test('converts strings to numbers', function(assert) {
+
+  assert.equal(numberAbbr(['1234'], {}),     '1.23K');
+});
+
 test('respects padding and maxSignificantPlaces', function(assert) {
 
   assert.equal(numberAbbr([3,'.',5,true], {}),     '3.0000');
